@@ -45,8 +45,8 @@ Contains example manifests and model definitions that show the specification in 
 
 The example content set uses:
 
-- [examples/manifest.yaml](/home/djeglin/projects/headlessCo/content-model-master-format/examples/manifest.yaml) for project-level defaults and discovery
-- [examples/models](/home/djeglin/projects/headlessCo/content-model-master-format/examples/models) for individual model definitions
+- [examples/manifest.yaml](../examples/manifest.yaml) for project-level defaults and discovery
+- [examples/models](../examples/models/) for individual model definitions
 
 ## Why Separate Docs from Spec
 

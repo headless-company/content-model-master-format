@@ -6,11 +6,11 @@ This repository contains the v1 specification, reference documentation, a JSON S
 
 ## Start Here
 
-- Read the documentation index in [docs/index.md](/home/djeglin/projects/headlessCo/content-model-master-format/docs/index.md).
-- Read the normative spec in [spec/cmmf-v1.md](/home/djeglin/projects/headlessCo/content-model-master-format/spec/cmmf-v1.md).
-- Validate model files with [schemas/model.schema.json](/home/djeglin/projects/headlessCo/content-model-master-format/schemas/model.schema.json).
-- Explore sample files under [examples](/home/djeglin/projects/headlessCo/content-model-master-format/examples).
-- Review visualisation guidance in [docs/visualisation.md](/home/djeglin/projects/headlessCo/content-model-master-format/docs/visualisation.md).
+- Read the documentation index in [docs/index.md](./docs/index.md).
+- Read the normative spec in [spec/cmmf-v1.md](./spec/cmmf-v1.md).
+- Validate model files with [schemas/model.schema.json](./schemas/model.schema.json).
+- Explore sample files under [examples](./examples/).
+- Review visualisation guidance in [docs/visualisation.md](./docs/visualisation.md).
 
 ## Repository Layout
 

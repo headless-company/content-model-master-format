@@ -257,7 +257,7 @@ validations:
 - `dimensions`
 - `fileSize`
 
-Validation semantics are intentionally lightweight in v1. CMS translators may need to map these into platform-specific constraints. See the deeper discussion in [docs/validations.md](/home/djeglin/projects/headlessCo/content-model-master-format/docs/validations.md).
+Validation semantics are intentionally lightweight in v1. CMS translators may need to map these into platform-specific constraints. See the deeper discussion in [docs/validations.md](../docs/validations.md).
 
 ## 13. Editorial Metadata
 

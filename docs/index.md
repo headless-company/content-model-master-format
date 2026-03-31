@@ -4,23 +4,23 @@ This documentation set explains what CMMF is, why it exists, how the format work
 
 ## Core Topics
 
-- [Why CMMF Exists](/home/djeglin/projects/headlessCo/content-model-master-format/docs/why-cmmf.md)
-- [Repository and File Structure](/home/djeglin/projects/headlessCo/content-model-master-format/docs/repository-structure.md)
-- [Model Kinds](/home/djeglin/projects/headlessCo/content-model-master-format/docs/model-kinds.md)
-- [Canonical Types](/home/djeglin/projects/headlessCo/content-model-master-format/docs/canonical-types.md)
-- [Relationships and Composition](/home/djeglin/projects/headlessCo/content-model-master-format/docs/relationships.md)
-- [Validations](/home/djeglin/projects/headlessCo/content-model-master-format/docs/validations.md)
-- [Visualisation and Diagram Generation](/home/djeglin/projects/headlessCo/content-model-master-format/docs/visualisation.md)
-- [Translation Concepts](/home/djeglin/projects/headlessCo/content-model-master-format/docs/translation-concepts.md)
+- [Why CMMF Exists](./why-cmmf.md)
+- [Repository and File Structure](./repository-structure.md)
+- [Model Kinds](./model-kinds.md)
+- [Canonical Types](./canonical-types.md)
+- [Relationships and Composition](./relationships.md)
+- [Validations](./validations.md)
+- [Visualisation and Diagram Generation](./visualisation.md)
+- [Translation Concepts](./translation-concepts.md)
 
 ## Formal Reference
 
-- [CMMF v1 Specification](/home/djeglin/projects/headlessCo/content-model-master-format/spec/cmmf-v1.md)
-- [Translation Contract v1](/home/djeglin/projects/headlessCo/content-model-master-format/spec/translation-contract-v1.md)
-- [JSON Schema Validator](/home/djeglin/projects/headlessCo/content-model-master-format/schemas/model.schema.json)
+- [CMMF v1 Specification](../spec/cmmf-v1.md)
+- [Translation Contract v1](../spec/translation-contract-v1.md)
+- [JSON Schema Validator](../schemas/model.schema.json)
 
 ## Example Material
 
-- [Examples Folder](/home/djeglin/projects/headlessCo/content-model-master-format/examples)
-- [Example Manifest](/home/djeglin/projects/headlessCo/content-model-master-format/examples/manifest.yaml)
-- [Example Models](/home/djeglin/projects/headlessCo/content-model-master-format/examples/models)
+- [Examples Folder](../examples/)
+- [Example Manifest](../examples/manifest.yaml)
+- [Example Models](../examples/models/)
