@@ -1,0 +1,40 @@
+id: person
+name: Person
+kind: entry
+description: Person profile content used for authorship and attribution.
+fields:
+  - id: full_name
+    name: Full Name
+    type: string
+    required: true
+
+  - id: slug
+    name: Slug
+    type: slug
+    required: true
+    editorial:
+      helpText: Used in profile URLs.
+
+  - id: bio
+    name: Biography
+    type: text
+
+  - id: headshot
+    name: Headshot
+    type: asset
+    validations:
+      mimeTypes:
+        - image/jpeg
+        - image/png
+
+editorial:
+  labelField: full_name
+  preview:
+    title: full_name
+    description: bio
+    image: headshot
+
+governance:
+  owner: platform-team
+  status: active
+  maturity: stable

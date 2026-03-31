@@ -1,0 +1,28 @@
+# Content Model Master Format (CMMF)
+
+CMMF is a CMS-agnostic content modelling language for defining content structures, editorial intent, and translation-ready metadata in a portable format.
+
+This repository contains the v1 specification, reference documentation, a JSON Schema validator, and example model files.
+
+## Start Here
+
+- Read the documentation index in [docs/index.md](/home/djeglin/projects/headlessCo/content-model-master-format/docs/index.md).
+- Read the normative spec in [spec/cmmf-v1.md](/home/djeglin/projects/headlessCo/content-model-master-format/spec/cmmf-v1.md).
+- Validate model files with [schemas/model.schema.json](/home/djeglin/projects/headlessCo/content-model-master-format/schemas/model.schema.json).
+- Explore sample files under [examples](/home/djeglin/projects/headlessCo/content-model-master-format/examples).
+- Review visualisation guidance in [docs/visualisation.md](/home/djeglin/projects/headlessCo/content-model-master-format/docs/visualisation.md).
+
+## Repository Layout
+
+```text
+.
+|-- README.md
+|-- docs
+|-- examples
+|-- schemas
+`-- spec
+```
+
+## Why CMMF
+
+CMMF gives teams a stable intermediate representation for content modelling. Instead of defining models directly in one CMS and inheriting its assumptions, teams can describe content once, preserve modelling intent, and translate that intent into different platforms with clearer rules and better tooling.

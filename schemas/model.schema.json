@@ -1,0 +1,210 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CMMF v1 Model Schema",
+  "type": "object",
+  "required": ["id", "name", "kind", "fields"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]+$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["entry", "component", "object", "taxonomy", "settings"]
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "localisation": {
+      "type": "boolean"
+    },
+    "singleton": {
+      "type": "boolean"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/field"
+      }
+    },
+    "editorial": {
+      "$ref": "#/definitions/editorial"
+    },
+    "governance": {
+      "type": "object"
+    },
+    "translationHints": {
+      "type": "object"
+    }
+  },
+  "definitions": {
+    "field": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]+$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "string",
+            "text",
+            "number",
+            "boolean",
+            "date",
+            "datetime",
+            "slug",
+            "enum",
+            "richText",
+            "asset",
+            "json",
+            "object",
+            "reference"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "localisation": {
+          "type": "boolean"
+        },
+        "default": {},
+        "list": {
+          "type": "boolean"
+        },
+        "objectType": {
+          "type": "string"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "relation": {
+          "$ref": "#/definitions/relation"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "validations": {
+          "type": "object"
+        },
+        "editorial": {
+          "$ref": "#/definitions/editorial"
+        },
+        "translationHints": {
+          "type": "object"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "object"
+              }
+            }
+          },
+          "then": {
+            "required": ["objectType"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "reference"
+              }
+            }
+          },
+          "then": {
+            "required": ["targets"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "enum"
+              }
+            }
+          },
+          "then": {
+            "required": ["values"]
+          }
+        }
+      ]
+    },
+    "relation": {
+      "type": "object",
+      "properties": {
+        "cardinality": {
+          "type": "string",
+          "enum": ["one", "many"]
+        },
+        "ordered": {
+          "type": "boolean"
+        },
+        "uniqueItems": {
+          "type": "boolean"
+        },
+        "minItems": {
+          "type": "number"
+        },
+        "maxItems": {
+          "type": "number"
+        },
+        "ownership": {
+          "type": "string",
+          "enum": ["linked", "contained"]
+        }
+      }
+    },
+    "editorial": {
+      "type": "object",
+      "properties": {
+        "labelField": {
+          "type": "string"
+        },
+        "preview": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "image": {
+              "type": "string"
+            }
+          }
+        },
+        "helpText": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+id: page
+name: Page
+kind: entry
+description: Generic page model for composed website content.
+fields:
+  - id: title
+    name: Title
+    type: string
+    required: true
+
+  - id: slug
+    name: Slug
+    type: slug
+    required: true
+
+  - id: page_type
+    name: Page Type
+    type: enum
+    values:
+      - landing
+      - article
+      - standard
+    default: standard
+
+  - id: hero_image
+    name: Hero Image
+    type: asset
+
+  - id: seo
+    name: SEO
+    type: object
+    objectType: seo-metadata
+
+  - id: related_articles
+    name: Related Articles
+    type: reference
+    targets:
+      - article
+    relation:
+      cardinality: many
+      ordered: true
+      uniqueItems: true
+      ownership: linked
+
+editorial:
+  labelField: title
+  preview:
+    title: title
+    image: hero_image
+
+governance:
+  owner: platform-team
+  status: active
+  maturity: stable

@@ -1,0 +1,28 @@
+id: seo-metadata
+name: SEO Metadata
+kind: object
+description: Reusable embedded SEO metadata structure.
+fields:
+  - id: meta_title
+    name: Meta Title
+    type: string
+    validations:
+      maxLength: 60
+
+  - id: meta_description
+    name: Meta Description
+    type: text
+    validations:
+      maxLength: 160
+
+  - id: canonical_url
+    name: Canonical URL
+    type: string
+
+  - id: noindex
+    name: No Index
+    type: boolean
+    default: false
+
+editorial:
+  labelField: meta_title
