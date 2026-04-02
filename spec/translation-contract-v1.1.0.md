@@ -1,4 +1,4 @@
-# CMMF Translation Contract v1
+# CMMF Translation Contract 1.1.0
 
 ## Purpose
 
@@ -31,6 +31,7 @@ The decisions log should record non-trivial translation choices, including:
 - how `contained` ownership was represented
 - how object structures were mapped
 - how unsupported validations were handled
+- how unsupported `richTextConfig` capabilities were handled
 - any inferred defaults or fallbacks
 - any platform limitations or lossy mappings
 
@@ -47,6 +48,7 @@ The following may vary by translator and target platform:
 
 - whether contained relationships become embedded objects or separate types
 - how editorial metadata is represented
+- how `richTextConfig` capabilities map onto target editor features
 - how governance metadata is preserved or omitted
 - how non-authoritative translation hints influence output
 
@@ -56,4 +58,5 @@ A translator must not:
 
 - mutate the meaning of the source model silently
 - ignore required constraints without reporting them
+- silently widen `richTextConfig` allowlists when the target editor cannot enforce them
 - drop relationship semantics without a logged decision

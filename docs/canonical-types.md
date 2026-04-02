@@ -2,7 +2,7 @@
 
 ## What Canonical Types Are
 
-Canonical types are the standard field types supported by CMMF v1.
+Canonical types are the standard field types supported by CMMF 1.1.0.
 
 They exist to provide a stable vocabulary for model authors while leaving room for translators to map those types into platform-specific equivalents.
 
@@ -130,8 +130,31 @@ Common options:
 
 - `required`
 - `localisation`
+- `richTextConfig`
 
-In v1, CMMF deliberately keeps rich text lightweight. It identifies the semantic need for rich text without defining a cross-platform portable editor configuration model.
+`richTextConfig` allows a model to express the intended rich text capability envelope without tying that field to one CMS editor implementation.
+
+Example:
+
+```yaml
+- id: body
+  type: richText
+  richTextConfig:
+    marks: [bold, italic, underline]
+    blocks: [paragraph, heading-1, quote]
+    embeds:
+      - kind: asset
+      - kind: reference
+        targets: [callout]
+```
+
+Within `richTextConfig`:
+
+- `marks` is an optional allowlist of inline formatting capabilities
+- `blocks` is an optional allowlist of block-level structures
+- `embeds` is an optional allowlist of supported embed kinds
+
+If `richTextConfig` is omitted, translators may use their default rich text capability set for the target platform. If requested capabilities cannot be represented cleanly, translators should log the lossy mapping.
 
 ### `asset`
 

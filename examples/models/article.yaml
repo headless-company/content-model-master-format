@@ -30,6 +30,23 @@ fields:
     name: Body
     type: richText
     required: true
+    richTextConfig:
+      marks:
+        - bold
+        - italic
+        - link
+      blocks:
+        - paragraph
+        - heading-2
+        - heading-3
+        - unordered-list
+        - ordered-list
+        - quote
+      embeds:
+        - kind: asset
+        - kind: reference
+          targets:
+            - person
 
   - id: hero_image
     name: Hero Image

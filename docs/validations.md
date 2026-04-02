@@ -10,9 +10,9 @@ They are important because they:
 - document modelling expectations
 - give translators and validators more information to work with
 
-In v1, validations are intentionally practical rather than exhaustive.
+In CMMF 1.1.0, validations are intentionally practical rather than exhaustive.
 
-## Supported Validation Keys in v1
+## Supported Validation Keys in 1.1.0
 
 - `minLength`
 - `maxLength`
@@ -80,11 +80,11 @@ Most useful for:
 
 - `asset`
 
-## Why Validation Stays Lightweight in v1
+## Why Validation Stays Lightweight in 1.1.0
 
 Different CMS platforms support validation in very different ways. Some provide rich native constraints; some require code; some do not support certain checks at all.
 
-CMMF v1 therefore uses validations as a shared intent layer. Translators should:
+CMMF 1.1.0 therefore uses validations as a shared intent layer. Translators should:
 
 - preserve validations where possible
 - report unsupported validations
@@ -92,7 +92,7 @@ CMMF v1 therefore uses validations as a shared intent layer. Translators should:
 
 ## Important Practical Point
 
-Not every validation key is meaningful for every type. CMMF v1 does not attempt to fully formalise that compatibility matrix inside the JSON Schema validator.
+Not every validation key is meaningful for every type. CMMF 1.1.0 does not attempt to fully formalise that compatibility matrix inside the JSON Schema validator.
 
 That means:
 

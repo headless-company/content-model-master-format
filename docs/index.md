@@ -15,8 +15,8 @@ This documentation set explains what CMMF is, why it exists, how the format work
 
 ## Formal Reference
 
-- [CMMF v1 Specification](../spec/cmmf-v1.md)
-- [Translation Contract v1](../spec/translation-contract-v1.md)
+- [CMMF 1.1.0 Specification](../spec/cmmf-v1.1.0.md)
+- [Translation Contract 1.1.0](../spec/translation-contract-v1.1.0.md)
 - [JSON Schema Validator](../schemas/model.schema.json)
 
 ## Example Material

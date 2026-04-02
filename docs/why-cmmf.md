@@ -53,7 +53,7 @@ That distinction matters because:
 - format migrations may be needed over time
 - translation behaviour needs contracts, not ad hoc assumptions
 
-## What CMMF Does Not Try to Solve in v1
+## What CMMF Does Not Try to Solve in 1.1.0
 
 Version 1 deliberately avoids becoming an all-purpose CMS definition language.
 

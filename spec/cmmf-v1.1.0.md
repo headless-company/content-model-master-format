@@ -1,4 +1,4 @@
-# Content Model Master Format (CMMF) v1
+# Content Model Master Format (CMMF) 1.1.0
 
 ## 1. Overview
 
@@ -43,7 +43,7 @@ The same CMMF input should produce the same structural interpretation every time
 Example:
 
 ```yaml
-specVersion: 1
+specVersion: "1.1.0"
 namespace: example.project
 modelsPath: ./models
 defaults:
@@ -55,12 +55,17 @@ defaults:
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `specVersion` | number | yes | Spec version. In v1 this must be `1`. |
+| `specVersion` | string | yes | Semver spec version. In CMMF 1.1.0 this must be `"1.1.0"`. |
 | `namespace` | string | yes | Unique namespace for the model set. |
 | `modelsPath` | string | no | Relative path to model files. |
 | `defaults` | object | no | Default values applied by tooling when omitted in model files. |
 
-### Supported Defaults in v1
+Legacy compatibility note:
+
+- pre-semver manifests may use `specVersion: 1` to indicate the original v1 release
+- semver-based manifests should use a quoted string such as `"1.1.0"`
+
+### Supported Defaults in 1.1.0
 
 | Field | Type | Description |
 |---|---|---|
@@ -136,6 +141,7 @@ Example:
 - `objectType`
 - `targets`
 - `values`
+- `richTextConfig`
 - `translationHints`
 
 ## 8. Canonical Types
@@ -201,6 +207,30 @@ Requirements:
 - `type` must be `enum`
 - `values` must be present
 
+### Rich Text Fields
+
+Rich text fields represent formatted editorial content with optional capability constraints.
+
+```yaml
+type: richText
+richTextConfig:
+  marks: [bold, italic]
+  blocks: [paragraph, heading-1, quote]
+  embeds:
+    - kind: asset
+    - kind: reference
+      targets: [callout]
+```
+
+Requirements:
+
+- `richTextConfig` is only valid when `type` is `richText`
+- omitted `richTextConfig` means translator-defined default rich text capabilities
+- `marks` and `blocks` are optional allowlists of translator-recognised capability tokens
+- `embeds` is an optional allowlist of supported embed definitions
+- embed `kind` must be `asset` or `reference`
+- `reference` embeds must include `targets`
+
 ## 10. Relationship Specification
 
 Example:
@@ -242,7 +272,7 @@ validations:
   maxLength: 100
 ```
 
-### Supported Validation Keys in v1
+### Supported Validation Keys in 1.1.0
 
 - `minLength`
 - `maxLength`
@@ -257,7 +287,7 @@ validations:
 - `dimensions`
 - `fileSize`
 
-Validation semantics are intentionally lightweight in v1. CMS translators may need to map these into platform-specific constraints. See the deeper discussion in [docs/validations.md](../docs/validations.md).
+Validation semantics are intentionally lightweight in 1.1.0. CMS translators may need to map these into platform-specific constraints. See the deeper discussion in [docs/validations.md](../docs/validations.md).
 
 ## 13. Editorial Metadata
 
@@ -328,9 +358,14 @@ Model and field IDs:
 
 - must include `values`
 
-## 17. Non-Goals for v1
+### Rich Text Fields
 
-The following are explicitly out of scope in v1:
+- `richTextConfig` must only appear on `richText` fields
+- `richTextConfig.embeds[*].targets` must be present when embed `kind` is `reference`
+
+## 17. Non-Goals for 1.1.0
+
+The following are explicitly out of scope in 1.1.0:
 
 - permissions
 - workflows
