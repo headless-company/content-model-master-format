@@ -62,7 +62,6 @@ fields:
     targets:
       - person
     relation:
-      cardinality: one
       ownership: linked
 
   - id: seo

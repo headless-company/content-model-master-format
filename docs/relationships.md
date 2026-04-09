@@ -32,16 +32,26 @@ This usually means:
 
 ## Relationship Options
 
-The `relation` object adds more detail to reference semantics.
+Repeatability uses field-level `list`, while the `relation` object adds more detail to reference semantics.
 
-### `cardinality`
+### `list`
 
-Defines whether the relationship is singular or plural.
+Repeatability is expressed at the field level with `list: true`.
+
+For reference fields, this answers the same modelling question that `cardinality` used to answer: is this relationship singular or repeatable?
+
+This keeps repeatability consistent across primitives, objects, and references.
+
+If `list` is omitted, the field is singular.
+
+### Legacy `relation.cardinality`
+
+Older reference fields may still use:
 
 - `one`
 - `many`
 
-This helps translators choose between single-reference and list/reference-array constructs.
+That form remains useful for compatibility during migration, but new models should prefer `list`.
 
 ### `ownership`
 
@@ -86,12 +96,13 @@ Without an explicit containment signal, those translations can drift in meaning.
 
 ## Lists in CMMF
 
-CMMF intentionally handles lists in two different ways:
+CMMF uses one repeatability mechanism across field types:
 
-- primitives and objects use `list: true`
-- references use `relation.cardinality: many`
+- primitives use `list: true`
+- objects use `list: true`
+- references use `list: true`
 
-This distinction helps preserve the difference between "a list of values or embedded structures" and "a plural relationship to independent content."
+The distinction between embedded structure and independent content still comes from `object` versus `reference`, not from separate repeatability keywords.
 
 ## What Explicit Relationships Enable
 

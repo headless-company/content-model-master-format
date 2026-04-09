@@ -18,7 +18,7 @@ Without kinds, every model looks like just another structure with fields. That h
 
 By making those roles explicit, CMMF allows tools and translators to treat models differently while preserving a shared source definition.
 
-## Supported Kinds in 1.1.0
+## Supported Kinds in 1.2.0
 
 ### `entry`
 

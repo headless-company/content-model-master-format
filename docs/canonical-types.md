@@ -2,7 +2,7 @@
 
 ## What Canonical Types Are
 
-Canonical types are the standard field types supported by CMMF 1.1.0.
+Canonical types are the standard field types supported by CMMF 1.2.0.
 
 They exist to provide a stable vocabulary for model authors while leaving room for translators to map those types into platform-specific equivalents.
 
@@ -197,13 +197,18 @@ Required option:
 
 - `targets`
 
-Strongly recommended option:
+Canonical repeatability option:
+
+- `list`
+
+Legacy compatibility option:
 
 - `relation.cardinality`
 
 Common additional options:
 
 - `required`
+- `list`
 - `relation.ownership`
 - `relation.ordered`
 - `relation.uniqueItems`
@@ -228,7 +233,7 @@ Some options are meaningful only for certain types. For example:
 - `values` applies to `enum`
 - `objectType` applies to `object`
 - `targets` and `relation` apply to `reference`
-- `list` is mainly useful for primitives and objects
+- `list` is the canonical repeatability flag for any field type, including `reference`
 
 ## Why Types Stay Abstract
 

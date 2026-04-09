@@ -2,6 +2,21 @@
 
 All notable changes to CMMF will be documented in this file.
 
+## 1.2.0
+
+### Changed
+
+- Changed repeatability to use field-level `list` as the canonical convention for all field types, including `reference`.
+- Changed the 1.2.0 specification and examples to use `list: true` for repeatable references instead of `relation.cardinality: many`.
+- Changed reference documentation and the JSON Schema validator to describe `relation.cardinality` as a legacy compatibility alias.
+
+### Migration Notes
+
+- Reference fields that used `relation.cardinality: many` should migrate to `list: true`.
+- Reference fields that used `relation.cardinality: one` can omit both `list` and `relation.cardinality`.
+- Translators and validators should continue accepting legacy `relation.cardinality` on reference fields during migration.
+- Models should treat conflicting `list` and `relation.cardinality` values as invalid.
+
 ## 1.1.0
 
 ### Added

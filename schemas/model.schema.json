@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "CMMF 1.1.0 Model Schema",
+  "title": "CMMF 1.2.0 Model Schema",
   "type": "object",
   "required": ["id", "name", "kind", "fields"],
   "properties": {
@@ -87,7 +87,8 @@
         },
         "default": {},
         "list": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Canonical repeatability flag for any field type in CMMF 1.2.0."
         },
         "objectType": {
           "type": "string"
@@ -144,6 +145,52 @@
           "then": {
             "required": ["targets"]
           }
+        },
+        {
+          "if": {
+            "required": ["type", "list", "relation"],
+            "properties": {
+              "type": {
+                "const": "reference"
+              },
+              "list": {
+                "const": true
+              },
+              "relation": {
+                "type": "object",
+                "required": ["cardinality"],
+                "properties": {
+                  "cardinality": {
+                    "const": "one"
+                  }
+                }
+              }
+            }
+          },
+          "then": false
+        },
+        {
+          "if": {
+            "required": ["type", "list", "relation"],
+            "properties": {
+              "type": {
+                "const": "reference"
+              },
+              "list": {
+                "const": false
+              },
+              "relation": {
+                "type": "object",
+                "required": ["cardinality"],
+                "properties": {
+                  "cardinality": {
+                    "const": "many"
+                  }
+                }
+              }
+            }
+          },
+          "then": false
         },
         {
           "if": {
@@ -246,7 +293,8 @@
       "properties": {
         "cardinality": {
           "type": "string",
-          "enum": ["one", "many"]
+          "enum": ["one", "many"],
+          "description": "Legacy compatibility alias for reference repeatability. Prefer field-level `list` in CMMF 1.2.0."
         },
         "ordered": {
           "type": "boolean"

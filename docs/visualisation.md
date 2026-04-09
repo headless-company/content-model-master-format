@@ -44,7 +44,7 @@ It should show:
 - model kind in the label or styling
 - `reference` links as directed edges
 - `object` embeddings as a distinct edge type or label
-- key relationship metadata such as `one`, `many`, `linked`, or `contained`
+- key relationship metadata such as singular versus repeatable, `linked`, or `contained`
 
 Example:
 
@@ -56,9 +56,9 @@ flowchart LR
     seo["seo-metadata (object)"]
 
     page -->|"related_articles
-reference many linked"| article
+reference repeatable linked"| article
     article -->|"author
-reference one linked"| person
+reference singular linked"| person
     article -.->|"seo
 object embedded"| seo
     page -.->|"seo
@@ -107,7 +107,7 @@ If diagrams are going to be truly useful, they should preserve a few distinction
 
 - `object` versus `reference`
 - `linked` versus `contained`
-- `one` versus `many`
+- singular versus repeatable references
 - `entry` versus `component` versus `object` versus `taxonomy` versus `settings`
 - required versus optional fields in field-level diagrams
 
@@ -120,7 +120,7 @@ Good default rules for a first generator:
 - render one node per model
 - include model `kind` in every node label
 - render `reference` fields as directional edges to target models
-- label reference edges with cardinality and ownership
+- label reference edges with repeatability and ownership
 - render `object` fields as embedded or dotted edges to the referenced object model
 - omit primitive-only fields from the global relationship view
 - create one detailed per-model diagram when a full field breakdown is needed
@@ -155,7 +155,7 @@ A FigJam or Miro-oriented generator should produce a board-friendly intermediate
 - a visible list of fields for each model
 - visual badges for model kind
 - connectors for references and embeddings
-- metadata chips for `many`, `contained`, `linked`, and requiredness
+- metadata chips for repeatable, `contained`, `linked`, and requiredness
 - optional grouping by domain, tags, or model kind
 
 ## Recommended Board Card Structure
@@ -209,7 +209,7 @@ A useful visual graph would typically include:
 - model nodes
 - field nodes or field metadata
 - edge type such as `reference` or `object`
-- edge semantics such as `linked`, `contained`, `one`, `many`
+- edge semantics such as `linked`, `contained`, singular, or repeatable
 - grouping metadata such as tags or inferred domains
 - optional visual hints such as preferred lane or emphasis
 

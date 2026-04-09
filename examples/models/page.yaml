@@ -34,10 +34,10 @@ fields:
   - id: related_articles
     name: Related Articles
     type: reference
+    list: true
     targets:
       - article
     relation:
-      cardinality: many
       ordered: true
       uniqueItems: true
       ownership: linked
