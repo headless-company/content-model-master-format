@@ -1,3 +1,9 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/brand/assets/cmmf-expanded-gradient-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/brand/assets/cmmf-expanded-gradient-light.svg">
+  <img alt="CMMF — Content Model Master Format" src="docs/brand/assets/cmmf-expanded-gradient-light.svg" width="550">
+</picture>
+
 # Content Model Master Format (CMMF)
 
 CMMF is a CMS-agnostic content modelling language for defining content structures, editorial intent, and translation-ready metadata in a portable format.
