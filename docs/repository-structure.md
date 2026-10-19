@@ -10,6 +10,8 @@
 |   |-- manifest.yaml
 |   `-- models
 |-- schemas
+|-- scripts
+|-- test
 `-- spec
 ```
 
@@ -56,3 +58,10 @@ Separating `docs` from `spec` helps in two ways:
 
 - the spec can stay crisp and authoritative
 - the docs can go deeper on rationale, tradeoffs, and interpretation
+
+## Beta Declaration Tooling
+
+This branch targets 1.3.0-beta.1. `scripts/validate-models.mjs` checks beta model
+declarations, and `test/` contains schema and semantic regression tests. These
+are specification support tools, not a content evaluation engine or CMS translator.
+See [beta adoption](./beta-testing.md) for exact source/version selection.

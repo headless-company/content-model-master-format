@@ -71,6 +71,58 @@ fields:
     translationHints:
       preferredRepresentation: embedded
 
+  - id: article_type
+    name: Article Type
+    type: enum
+    required: true
+    values: [internal, external]
+
+  - id: source_url
+    name: Source URL
+    type: string
+
+  - id: noindex
+    name: Exclude from Search
+    type: boolean
+
+  - id: noindex_reason
+    name: Search Exclusion Reason
+    type: text
+
+validationHints:
+  - id: external-requires-source
+    description: External articles must provide a source URL.
+    when:
+      field: article_type
+      equals: external
+    then:
+      require: [source_url]
+
+  - id: author-or-source
+    description: Provide at least one author or a source URL.
+    then:
+      atLeastOneOf: [author, source_url]
+
+  - id: explain-noindex
+    description: Explain why an external article is excluded from search.
+    severity: warning
+    when:
+      allOf:
+        - field: article_type
+          equals: external
+        - not:
+            anyOf:
+              - field: noindex
+                isEmpty: true
+              - field: noindex
+                equals: false
+    then:
+      require: [noindex_reason]
+
+  - id: check-source-rights
+    description: Confirm permission to republish external source material.
+    severity: info
+
 editorial:
   labelField: title
   preview:

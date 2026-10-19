@@ -1,105 +1,64 @@
 # Validations
 
-## Why Validations Exist in CMMF
+This branch documents **CMMF 1.3.0-beta.1**, an experimental prerelease. Stable
+1.2.0 remains canonical on `main` and the `v1.2.0` release.
 
-Validations allow a model to express structural constraints without tying those constraints to one CMS implementation.
+Validation has three distinct concerns. Passing one does not imply passing all three.
 
-They are important because they:
+## Schema / Format Validation
 
-- improve content quality
-- document modelling expectations
-- give translators and validators more information to work with
+[The JSON Schema](../schemas/model.schema.json) checks model declaration shape:
+required properties, canonical field types, relationship compatibility, rich-text
+configuration, and the structure of `validationHints`. It rejects malformed hint
+objects, missing IDs or descriptions, unknown operators, mixed representations,
+and empty action lists. It does not validate documents containing content.
 
-In CMMF 1.2.0, validations are intentionally practical rather than exhaustive.
+## Graph / Semantic Validation
 
-## Supported Validation Keys in 1.2.0
+Semantic validation checks declarations in context. A structured hint must refer
+to fields that actually exist in the same model. Hint IDs must be unique within
+that model, and operators and literal types must fit the referenced field.
 
-- `minLength`
-- `maxLength`
-- `regex`
-- `min`
-- `max`
-- `integerOnly`
-- `minItems`
-- `maxItems`
-- `uniqueItems`
-- `mimeTypes`
-- `dimensions`
-- `fileSize`
+The beta includes a small [declaration checker](../scripts/validate-models.mjs):
 
-## Validation by Field Category
+```sh
+npm ci
+npm run validate
+node scripts/validate-models.mjs --manifest /path/to/manifest.yaml
+```
 
-### Text-like Fields
+It requires Node.js 22 or later and the exact manifest version `"1.3.0-beta.1"`.
+It reads YAML or JSON model files directly within `modelsPath` (default `./models`)
+and reports schema errors, duplicate model/field/hint IDs, unknown structured field
+references, incompatible operators or operands, and malformed regex patterns.
+It does not change input or insert defaults.
 
-Common validations:
+This is a focused declaration checker, not a complete model-graph validator: it
+does not resolve relationship targets, inspect dialect-specific expressions or
+prose, solve contradictory hints, or fully formalise existing field validations.
 
-- `minLength`
-- `maxLength`
-- `regex`
+## Content Validation
 
-Most useful for:
+Content validation asks whether a particular document meets the model's declared
+constraints. Field-level `required` and `validations` express single-field intent;
+model-level [validation hints](./document-validation-hints.md) describe conditional
+and cross-field intent. A hint's `severity` describes the intended content finding.
+It does not change whether the hint declaration itself is valid.
 
-- `string`
-- `text`
-- `slug`
+CMMF does not ship a content evaluator or execute expressions. Editors, validators,
+and translators decide how to realise that intent. Translators must account for
+every hint with a disposition and reason; hints are never silently discarded.
 
-### Number Fields
+## Existing Field-Level Validation Keys
 
-Common validations:
+Field validations remain unchanged in this beta:
 
-- `min`
-- `max`
-- `integerOnly`
-
-Most useful for:
-
-- `number`
-
-### List-like Fields
-
-Common validations:
-
-- `minItems`
-- `maxItems`
-- `uniqueItems`
-
-Most useful for:
-
-- `list: true` fields, including repeatable references
-- translator logic that carries list-oriented constraints into target-platform relationship fields
-
-### Asset Fields
-
-Common validations:
-
-- `mimeTypes`
-- `dimensions`
-- `fileSize`
-
-Most useful for:
-
-- `asset`
-
-## Why Validation Stays Lightweight in 1.2.0
-
-Different CMS platforms support validation in very different ways. Some provide rich native constraints; some require code; some do not support certain checks at all.
-
-CMMF 1.2.0 therefore uses validations as a shared intent layer. Translators should:
-
-- preserve validations where possible
-- report unsupported validations
-- log lossy mappings in translation output
-
-## Important Practical Point
-
-Not every validation key is meaningful for every type. CMMF 1.2.0 does not attempt to fully formalise that compatibility matrix inside the JSON Schema validator.
-
-That means:
-
-- the schema catches structural presence rules
-- deeper semantic validation is a good candidate for a dedicated validation tool or agent
-
-## Example
+| Category | Keys | Typical fields |
+|---|---|---|
+| Text | `minLength`, `maxLength`, `regex` | `string`, `text`, `slug` |
+| Number | `min`, `max`, `integerOnly` | `number` |
+| Lists | `minItems`, `maxItems`, `uniqueItems` | Any `list: true` field |
+| Asset | `mimeTypes`, `dimensions`, `fileSize` | `asset` |
 
 ```yaml
 - id: title
@@ -110,4 +69,6 @@ That means:
     maxLength: 100
 ```
 
-This says more than "store a string." It says the field has expected editorial bounds, and those bounds should be preserved or at least acknowledged during translation.
+Field-level validation semantics remain lightweight. Translators preserve them
+where possible and report unsupported or lossy mappings. The schema does not
+fully formalise the compatibility matrix for those existing validation keys.
