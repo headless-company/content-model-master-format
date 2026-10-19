@@ -1,0 +1,52 @@
+# Operating system metadata
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100/
+.Trashes/
+Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
+$RECYCLE.BIN/
+
+# Local editor settings and temporary files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.orig
+
+# Dependencies and caches
+node_modules/
+.npm/
+.cache/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Generated artifacts and build output
+/artifacts/
+/artefacts/
+/dist/
+/build/
+/out/
+/tmp/
+/temp/
+*.tsbuildinfo
+
+# Test and coverage reports
+/coverage/
+/.nyc_output/
+/test-results/
+/playwright-report/
+
+# Logs and local environment files
+*.log
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
