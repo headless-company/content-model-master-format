@@ -5,6 +5,19 @@ GitHub prerelease. It is not merged into `main`. Stable `v1.2.0` remains canonic
 and retains GitHub's Latest stable status. This branch defaults to the beta;
 there is no second feature flag or 1.2 fallback inside the beta.
 
+## RFC and Implementation
+
+This beta implements [RFC #1: document-level validation hints](https://github.com/headless-company/content-model-master-format/issues/1).
+The implementation was introduced in commit
+[`a0c7a3d`](https://github.com/headless-company/content-model-master-format/commit/a0c7a3d87fe46d74b5e78ac851e8b156201376a4).
+The beta specification resolves the RFC's open questions: hint IDs are required,
+structured and expression forms cannot share a hint, and translation dispositions
+must identify both model and hint with a reason. The normative beta documents
+define the implemented behaviour where the original proposal differs.
+
+The RFC remains open while the beta is tested. This branch's draft PR is for
+review; merging and stable promotion remain separate decisions.
+
 ## Pin the Source and Manifest
 
 Use tag `v1.3.0-beta.1` for reproducible testing, rather than the moving branch.
