@@ -1,7 +1,7 @@
 # Adopting the 1.3 Beta
 
 This release is **1.3.0-beta.1**, published from `feature/validation-hints` as a
-GitHub prerelease. It is not merged into `main`. Stable `v1.2.0` remains canonical
+GitHub prerelease. It is not merged into `main`. Stable `v1.2.1` remains canonical
 and retains GitHub's Latest stable status. This branch defaults to the beta;
 there is no second feature flag or 1.2 fallback inside the beta.
 
@@ -53,8 +53,8 @@ The immutable `v1.3.0-beta.1` tag and its pinned resources above predate this fi
 To test the corrected beta, check out `feature/validation-hints` and pin the
 chosen commit SHA for reproducibility. Continue declaring
 `specVersion: "1.3.0-beta.1"`; use the schema and checker from that same commit.
-The fix will also be included in the next versioned beta release. The 1.2.1
-patch is prepared separately; this branch does not publish or promote it.
+The fix will also be included in the next versioned beta release. The stable 1.2.1
+patch is published separately on `main`; the beta remains an opt-in prerelease.
 
 ## Check Declarations
 

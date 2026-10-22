@@ -2,7 +2,7 @@
 
 **Status: experimental prerelease.** This branch and its default schema, documentation,
 and examples describe 1.3.0-beta.1. The canonical stable release remains
-[1.2.0](https://github.com/headless-company/content-model-master-format/releases/tag/v1.2.0).
+[1.2.1](https://github.com/headless-company/content-model-master-format/releases/tag/v1.2.1).
 Use the exact prerelease version in manifests; selecting this beta must never fall
 back to 1.2.0. No stable 1.3.0 release exists yet.
 

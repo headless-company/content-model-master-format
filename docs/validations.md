@@ -1,7 +1,7 @@
 # Validations
 
 This branch documents **CMMF 1.3.0-beta.1**, an experimental prerelease. Stable
-1.2.0 remains canonical on `main` and the `v1.2.0` release.
+1.2.1 remains canonical on `main` and the `v1.2.1` release.
 
 Validation has three distinct concerns. Passing one does not imply passing all three.
 

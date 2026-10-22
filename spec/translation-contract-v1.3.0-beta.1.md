@@ -1,7 +1,7 @@
 # CMMF Translation Contract 1.3.0-beta.1
 
 **Status: experimental prerelease.** Applies to the exact `1.3.0-beta.1` input
-version. Stable 1.2.0 remains available on the stable release and `main`.
+version. Stable 1.2.1 is available on the stable release and `main`.
 Unsupported spec versions must be reported; a translator must not silently
 interpret beta input as 1.2.0.
 

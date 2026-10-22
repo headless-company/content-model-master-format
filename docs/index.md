@@ -2,7 +2,7 @@
 
 This documentation set explains what CMMF is, why it exists, how the format works, and how to reason about translation into CMS platforms.
 
-This branch documents **1.3.0-beta.1** throughout. Stable **1.2.0** remains canonical
+This branch documents **1.3.0-beta.1** throughout. Stable **1.2.1** remains canonical
 on `main` and its stable release. Start with [beta adoption](./beta-testing.md)
 when integrating an editor or other consumer.
 

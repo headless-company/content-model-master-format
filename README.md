@@ -12,8 +12,8 @@ This branch contains **CMMF 1.3.0-beta.1**, an experimental prerelease adding
 model-level `validationHints` for conditional and cross-field intent. The default
 specification, documentation, JSON Schema, checker, and examples all target this beta.
 
-**The canonical stable version remains 1.2.0.** Use
-[the stable release](https://github.com/headless-company/content-model-master-format/releases/tag/v1.2.0)
+**The canonical stable version remains 1.2.1.** Use
+[the stable release](https://github.com/headless-company/content-model-master-format/releases/tag/v1.2.1)
 or [`main`](https://github.com/headless-company/content-model-master-format/tree/main)
 for stable material. This feature branch is not merged into `main`.
 

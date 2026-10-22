@@ -1,7 +1,7 @@
 # Document-Level Validation Hints
 
 **Experimental: CMMF 1.3.0-beta.1.** This branch defaults to the beta throughout.
-Declare `specVersion: "1.3.0-beta.1"` in the manifest. Stable 1.2.0 remains
+Declare `specVersion: "1.3.0-beta.1"` in the manifest. Stable 1.2.1 remains
 canonical on `main`; adopting hints requires explicitly selecting the beta.
 
 ## Why Model-Level Hints Exist

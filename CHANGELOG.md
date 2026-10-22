@@ -33,7 +33,7 @@ All notable changes to CMMF will be documented in this file.
 ### Migration and Release Notes
 
 - Experimental prerelease on `feature/validation-hints`; not merged into `main`.
-- Stable `v1.2.0` remains canonical and GitHub's latest stable release. Consumers
+- Stable `v1.2.1` is canonical and GitHub's latest stable release. Consumers
   must explicitly opt into the beta and pin `specVersion: "1.3.0-beta.1"`.
 - No stable `1.3.0` release exists. No beta request may silently fall back to 1.2.
 - Field-level validations and existing structures retain their meaning. Adopting
