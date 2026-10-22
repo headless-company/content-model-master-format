@@ -1,0 +1,17 @@
+id: subscription
+name: Subscription
+kind: entry
+description: Illustrates a non-portable expression; CMMF does not execute it.
+fields:
+  - id: monthly_price
+    type: number
+    required: true
+  - id: quarterly_price
+    type: number
+    required: true
+validationHints:
+  - id: quarterly-price-bound
+    description: Quarterly price must exceed three times the monthly price.
+    expression:
+      dialect: jsonlogic
+      rule: {">": [{"var": "quarterly_price"}, {"*": [3, {"var": "monthly_price"}]}]}

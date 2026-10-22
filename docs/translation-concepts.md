@@ -58,3 +58,32 @@ Future translators will likely benefit from explicit modes such as:
 - `optimised`
 
 `strict` focuses on preserving source intent as directly as possible. `optimised` allows more adaptation for target-platform fit, while still documenting those adaptations.
+
+## Document-Level Hint Decisions
+
+In this 1.3.0-beta.1 branch, every `validationHints` declaration requires a
+disposition identifying its model and hint, with a reason. This applies to
+structured hints, expressions with unknown dialects, and prose alike.
+
+```yaml
+decisionsLog:
+  - modelId: article
+    hintId: external-requires-source
+    disposition: degraded
+    reason: >-
+      Generated editorial guidance describing conditional source_url
+      requiredness; no conditional validation integration was generated.
+  - modelId: subscription
+    hintId: quarterly-price-bound
+    disposition: unmapped
+    reason: >-
+      This translator does not understand jsonlogic and cannot generate
+      meaningful target guidance for this rule.
+```
+
+`mapped` means the declared intent and severity are preserved. `degraded` means
+some intent survives with a documented loss; guidance text alone falls here.
+`unmapped` means no usable target representation was produced. The YAML shape is
+illustrative: the [beta contract](../spec/translation-contract-v1.3.0-beta.1.md)
+requires the information, not a particular serialization. These decisions do
+not evaluate content and do not change authoritative field constraints.
