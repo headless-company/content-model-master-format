@@ -2,6 +2,23 @@
 
 All notable changes to CMMF will be documented in this file.
 
+## 1.2.1
+
+### Fixed
+
+- Allow uppercase ASCII letters in model and field IDs, including camelCase and
+  PascalCase. IDs are case-sensitive and references preserve their casing.
+- Require translators to record target-required ID renaming, update references,
+  and detect collisions rather than silently merging distinct IDs.
+- Add automated ID syntax and example validation checks to prevent regressions.
+
+### Compatibility
+
+- Existing lowercase IDs remain valid without changes. Historical 1.2.0
+  specifications and release tags remain unchanged.
+- Manifests adopting this patch declare `specVersion: "1.2.1"` and use the matching
+  schema. Validators pinned to 1.2.0 still reject uppercase IDs.
+
 ## 1.2.0
 
 ### Changed

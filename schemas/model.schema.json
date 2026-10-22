@@ -1,12 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "CMMF 1.2.0 Model Schema",
+  "title": "CMMF 1.2.1 Model Schema",
   "type": "object",
   "required": ["id", "name", "kind", "fields"],
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^[a-z0-9_-]+$"
+      "pattern": "^[A-Za-z0-9_-]+$"
     },
     "name": {
       "type": "string"
@@ -53,7 +53,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^[a-z0-9_-]+$"
+          "pattern": "^[A-Za-z0-9_-]+$"
         },
         "name": {
           "type": "string"
@@ -88,7 +88,7 @@
         "default": {},
         "list": {
           "type": "boolean",
-          "description": "Canonical repeatability flag for any field type in CMMF 1.2.0."
+          "description": "Canonical repeatability flag for any field type in CMMF 1.2.1."
         },
         "objectType": {
           "type": "string"
@@ -294,7 +294,7 @@
         "cardinality": {
           "type": "string",
           "enum": ["one", "many"],
-          "description": "Legacy compatibility alias for reference repeatability. Prefer field-level `list` in CMMF 1.2.0."
+          "description": "Legacy compatibility alias for reference repeatability. Prefer field-level `list` in CMMF 1.2.1."
         },
         "ordered": {
           "type": "boolean"

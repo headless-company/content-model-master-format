@@ -2,7 +2,7 @@
 
 ## What Canonical Types Are
 
-Canonical types are the standard field types supported by CMMF 1.2.0.
+Canonical types are the standard field types supported by CMMF 1.2.1.
 
 They exist to provide a stable vocabulary for model authors while leaving room for translators to map those types into platform-specific equivalents.
 
