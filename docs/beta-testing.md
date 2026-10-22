@@ -43,6 +43,19 @@ select 1.2. If a UI offers a shorthand such as “1.3 beta”, resolve it explic
 `1.3.0-beta.1` and persist the exact version. Bare `1.3` or `1.3.0` is not a beta
 manifest version and must not imply an unpublished stable release.
 
+## ID Casing Fix After the Published Tag
+
+The feature branch incorporates the 1.2.1 bug fix allowing uppercase ASCII
+letters in model, field, and hint IDs, including all structured hint field
+references. IDs are case-sensitive and references must match exactly.
+
+The immutable `v1.3.0-beta.1` tag and its pinned resources above predate this fix.
+To test the corrected beta, check out `feature/validation-hints` and pin the
+chosen commit SHA for reproducibility. Continue declaring
+`specVersion: "1.3.0-beta.1"`; use the schema and checker from that same commit.
+The fix will also be included in the next versioned beta release. The 1.2.1
+patch is prepared separately; this branch does not publish or promote it.
+
 ## Check Declarations
 
 From a checkout of the beta tag, with Node.js 22 or later:

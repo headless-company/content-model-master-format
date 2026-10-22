@@ -28,6 +28,49 @@ const invalid = (value, code = 'schema') => assert.ok(validateModel(value).some(
 
 test('old model structure and hint-free models remain valid', () => valid(model()));
 
+const mixedCaseModel = () => ({
+  id: 'ArticlePage', name: 'Article page', kind: 'entry',
+  fields: [{ id: 'pageTitle', type: 'string' }, { id: 'pagetitle', type: 'string' }],
+  validationHints: [{
+    id: 'RequireTitle', description: 'A title is required.',
+    when: { not: { anyOf: [{ field: 'pageTitle', isEmpty: true }] } },
+    then: { require: ['pageTitle'] },
+  }],
+});
+
+test('camelCase references and case-distinct field and hint IDs preserve identity', () => {
+  const value = mixedCaseModel();
+  value.validationHints.push({ id: 'requiretitle', description: 'A distinct hint.' });
+  const before = structuredClone(value);
+  valid(value);
+  assert.deepEqual(value, before);
+});
+
+test('condition field lookup requires exact casing', () => {
+  const value = mixedCaseModel();
+  value.validationHints[0].when = { field: 'PageTitle', isEmpty: true };
+  invalid(value, 'unknown-field');
+});
+
+for (const action of ['require', 'forbid', 'atLeastOneOf', 'atMostOneOf', 'exactlyOneOf']) {
+  test(`${action} accepts camelCase and resolves case-distinct fields separately`, () => {
+    const value = mixedCaseModel();
+    value.validationHints[0].then = { [action]: ['pageTitle', 'pagetitle'] };
+    valid(value);
+    value.validationHints[0].then[action] = ['PageTitle'];
+    invalid(value, 'unknown-field');
+  });
+}
+
+test('mixed-case IDs still reject exact field and hint duplicates', () => {
+  const value = mixedCaseModel();
+  value.fields.push({ id: 'pageTitle', type: 'string' });
+  invalid(value, 'duplicate-field-id');
+  value.fields.pop();
+  value.validationHints.push(structuredClone(value.validationHints[0]));
+  invalid(value, 'duplicate-hint-id');
+});
+
 for (const [name, value] of Object.entries({
   prose: hint({ severity: 'info' }),
   conditional: conditional({ field: 'kind', equals: 'external' }),

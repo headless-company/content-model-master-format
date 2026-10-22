@@ -28,6 +28,12 @@ for stable material. This feature branch is not merged into `main`.
 - Explore sample files under [examples](./examples/).
 - Review visualisation guidance in [docs/visualisation.md](./docs/visualisation.md).
 
+The branch includes the **1.2.1 ID casing fix**: model and field IDs support
+camelCase and PascalCase and are case-sensitive. Stable patch material is in
+[the 1.2.1 specification](./spec/cmmf-v1.2.1.md). The published `v1.3.0-beta.1`
+tag predates this fix; use the feature branch instructions in the beta guide
+to test it.
+
 ## Try the Beta
 
 ```sh

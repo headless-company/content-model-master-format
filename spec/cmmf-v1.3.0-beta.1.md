@@ -514,8 +514,14 @@ Translation hints are non-authoritative. They inform downstream translators with
 Model and field IDs:
 
 - must be unique within their scope
-- must be lowercase
-- must use only alphanumeric characters, `_`, or `-`
+- must be non-empty and use only ASCII letters (`A-Z`, `a-z`), digits (`0-9`), `_`, or `-`
+- are case-sensitive: `pageTitle` and `pagetitle` are distinct IDs
+- must preserve their original casing wherever referenced
+
+Camel case, Pascal case, snake case, and kebab case are all permitted. Translators
+must preserve ID casing unless the target platform requires a different form.
+Any renaming must be recorded in the decisions log, applied consistently to all
+references, and checked for collisions; conflicting IDs must not be silently merged.
 
 ### Object Fields
 

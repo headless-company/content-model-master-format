@@ -11,7 +11,7 @@
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^[a-z0-9_-]+$"
+      "pattern": "^[A-Za-z0-9_-]+$"
     },
     "name": {
       "type": "string"
@@ -74,7 +74,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^[a-z0-9_-]+$"
+          "pattern": "^[A-Za-z0-9_-]+$"
         },
         "name": {
           "type": "string"
@@ -405,7 +405,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^[a-z0-9_-]+$"
+          "pattern": "^[A-Za-z0-9_-]+$"
         },
         "description": {
           "type": "string",
@@ -540,7 +540,7 @@
       "properties": {
         "field": {
           "type": "string",
-          "pattern": "^[a-z0-9_-]+$"
+          "pattern": "^[A-Za-z0-9_-]+$"
         },
         "equals": {
           "type": [
@@ -675,7 +675,7 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^[a-z0-9_-]+$"
+            "pattern": "^[A-Za-z0-9_-]+$"
           }
         },
         "forbid": {
@@ -684,7 +684,7 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^[a-z0-9_-]+$"
+            "pattern": "^[A-Za-z0-9_-]+$"
           }
         },
         "atLeastOneOf": {
@@ -693,7 +693,7 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^[a-z0-9_-]+$"
+            "pattern": "^[A-Za-z0-9_-]+$"
           }
         },
         "atMostOneOf": {
@@ -702,7 +702,7 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^[a-z0-9_-]+$"
+            "pattern": "^[A-Za-z0-9_-]+$"
           }
         },
         "exactlyOneOf": {
@@ -711,7 +711,7 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^[a-z0-9_-]+$"
+            "pattern": "^[A-Za-z0-9_-]+$"
           }
         }
       }

@@ -41,6 +41,7 @@ The decisions log should record non-trivial translation choices, including:
 - the disposition of every model-level `validationHints` declaration
 - how unsupported `richTextConfig` capabilities were handled
 - whether legacy `relation.cardinality` input was normalised to `list`
+- any target-required ID renaming, including the original and generated IDs
 - any inferred defaults or fallbacks
 - any platform limitations or lossy mappings
 
@@ -66,6 +67,9 @@ The following may vary by translator and target platform:
 A translator must not:
 
 - mutate the meaning of the source model silently
+- change ID casing unless required by the target platform
+- rename IDs without logging the mapping and updating every reference
+- silently merge distinct source IDs that collide after target-required renaming
 - ignore required constraints without reporting them
 - silently widen `richTextConfig` allowlists when the target editor cannot enforce them
 - drop relationship semantics without a logged decision

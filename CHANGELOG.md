@@ -20,6 +20,16 @@ All notable changes to CMMF will be documented in this file.
   `1.3.0-beta.1`. Historical 1.1.0 and 1.2.0 specifications remain unchanged.
 - Validation guidance distinguishes format, declaration semantics, and content checks.
 
+### Fixed
+
+- Incorporate the 1.2.1 ID casing fix: model, field, and hint IDs and all
+  structured hint field references accept uppercase ASCII letters.
+- Preserve case-sensitive identity and require logged, collision-checked
+  target-required renaming. Add shared ID tests and beta reference regressions.
+- This fix is on the feature branch after the published `v1.3.0-beta.1` tag;
+  the existing tag remains immutable. See the beta testing guide for how to
+  test the corrected branch.
+
 ### Migration and Release Notes
 
 - Experimental prerelease on `feature/validation-hints`; not merged into `main`.
@@ -32,6 +42,23 @@ All notable changes to CMMF will be documented in this file.
   accept `validationHints` without checking them. Acceptance is not feature support.
 - Hints do not execute validation. The included checker validates declarations;
   Studio adoption and other consumer implementations are separate work.
+
+## 1.2.1
+
+### Fixed
+
+- Allow uppercase ASCII letters in model and field IDs, including camelCase and
+  PascalCase. IDs are case-sensitive and references preserve their casing.
+- Require translators to record target-required ID renaming, update references,
+  and detect collisions rather than silently merging distinct IDs.
+- Add automated ID syntax and example validation checks to prevent regressions.
+
+### Compatibility
+
+- Existing lowercase IDs remain valid without changes. Historical 1.2.0
+  specifications and release tags remain unchanged.
+- Manifests adopting this patch declare `specVersion: "1.2.1"` and use the matching
+  schema. Validators pinned to 1.2.0 still reject uppercase IDs.
 
 ## 1.2.0
 
